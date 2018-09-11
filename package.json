@@ -1,13 +1,13 @@
 {
   "name": "js-library-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/js-library-template.git",
   "author": "Jacek Nowacki @dzek69 <git-public@dzek.eu>",
   "license": "MIT",
   "scripts": {
     "test": "NODE_ENV=testing mocha 'src/**/*.spec.js'",
-    "docs": "node build-scripts/docs && jsdoc src/* README.md -t node_modules/docdash -d ./docs -u ./tutorials",
+    "docs": "node build-scripts/docs && jsdoc src/* README.md -t node_modules/docdash -d ./docs -u ./tutorials && node build-scripts/docs.after",
     "transpile": "node build-scripts/transpile && babel src -d dist --ignore spec.js",
     "prepublishOnly": "npm run docs && npm run transpile"
   },
@@ -15,12 +15,10 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-rewire": "^1.1.0",
     "babel-preset-env": "^1.6.1",
-    "docdash": "^0.4.0",
+    "docdash": "^1.0.0",
+    "fs-extra": "^7.0.0",
     "jsdoc": "^3.5.5",
-    "lodash": "^4.17.4",
-    "mkdirp-promise": "^5.0.1",
     "mocha": "^4.0.1",
-    "must": "^0.13.4",
-    "rmdir": "^1.2.0"
+    "must": "^0.13.4"
   }
 }

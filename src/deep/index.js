@@ -1,7 +1,7 @@
 const os = require("os");
 
 /**
- * Returns "howdy" followed by given name or
+ * Returns "howdy" followed by given name and os platform
  *
  * @param {string} [name="stranger"] - name of person to greet
  * @returns {string} - greeting

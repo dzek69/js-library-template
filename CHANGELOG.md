@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.0.2] - 2018-09-11
+### Added
+- Possibility to define list of additional docs files while generating docs
+
+### Changed
+- Updated docdash
+- Replaced fs-related dependencies with single fs-extra
+
+### Removed
+- Lodash, that was unused anyway
+
 ## [1.0.1] - 2017-12-10
 ### Added
 - Rewire plugin for testing
