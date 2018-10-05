@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Returns "hi" followed by given name
  *

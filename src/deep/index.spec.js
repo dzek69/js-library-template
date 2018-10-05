@@ -1,7 +1,9 @@
+"use strict";
+
 const howdy = require("./index");
 
 describe("howdy", () => {
-    let platformMock = "";
+    let platformMock;
 
     const osMock = {
         platform: () => platformMock,
@@ -19,11 +21,11 @@ describe("howdy", () => {
         platformMock = "mochaOS";
     });
 
-    it("must say howdy with name and os platform", function () {
+    it("must say howdy with name and os platform", () => {
         howdy("Jack").must.equal("howdy Jack on mochaOS");
     });
 
-    it("returns `stranger` as name when not given", function () {
+    it("returns `stranger` as name when not given", () => {
         howdy().must.equal("howdy stranger on mochaOS");
     });
 });
