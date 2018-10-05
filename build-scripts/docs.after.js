@@ -10,6 +10,8 @@ const { prepareCopyList } = require("./docs/utils");
         });
 
         await Promise.all(removeJobs);
+
+        console.info("OK: Cleaned up temp tutorial files");
     }
     catch (error) {
         console.error("There was a problem with generating docs cleanup: ", error);

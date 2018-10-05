@@ -17,6 +17,8 @@ const { prepareCopyList } = require("./docs/utils");
         });
 
         await Promise.all(copyJobs);
+
+        console.info("OK: Prepared docs tutorial files");
     }
     catch (error) {
         console.error("There was a problem with generating docs: ", error);
