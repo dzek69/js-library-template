@@ -1,0 +1,186 @@
+# This file includes common "not needed" files.
+
+
+
+## Dangerous !!! - probably will break your app
+
+### Lodash bundled files, can be removed if only single files are used
+
+lodash/core.js
+lodash/lodash.js
+
+### General bundles
+
+build
+bundle
+dist
+*.bundle.js
+*.min.js
+
+### Binary data
+
+*.gz
+*.gyp
+*.rar
+*.tar
+*.tgz
+*.zip
+
+### Configuration files
+
+*.yml
+
+### Specific libraries files
+
+moment/min
+
+
+
+## Problematic - causes issues from time to time
+
+### Map files
+
+*.map
+!lodash.map
+
+### Asset files
+
+doc
+docs
+
+
+
+## Safe - probably
+
+### IDE files
+
+*.csproj
+*.vcxproj*
+*.nuspec
+*.sln
+.dir-locals.el
+.idea
+.dntrc
+.vscode
+
+### Test files
+
+*.spec.*
+*.test.*
+spec
+test
+tests
+__tests__
+
+### Assets files
+
+assets
+img
+images
+static
+website
+
+### Examples
+
+example
+examples
+sample
+samples
+screenshots
+
+### Code coverage
+
+.nyc_output
+coverage
+
+### Build scripts
+
+.gradle
+Makefile
+Gulpfile.js
+Gruntfile.js
+fuse.js
+*.bat
+*.gradle
+*.sh
+
+### Configs
+
+.*ignore
+.babelrc
+.editorconfig
+.eslintrc
+.eslintrc.*
+.documentup.json
+.flowconfig
+.gitattributes
+.git
+.github
+.gitmodules
+.htmllintrc
+.istanbul.yml
+.jamignore
+.jscsrc
+.jsbeautifyrc
+.jshintignore
+.jshintrc
+.lintignore
+.npmrc
+.stylelint.*
+.stylelintrc
+.stylelintrc.*
+.tern-project
+.travis.yml
+.tsconfig.json
+.yarn-metadata.json
+.yarnclean
+*.ini
+*.opts
+appveyor.yml
+benchmark
+bower.json
+circle.yml
+codeship-services.yml
+codeship-steps.yml
+docker-compose*
+Dockerfile
+jest.config.js
+karma.conf.js
+wercker.yml
+yarn.lock
+
+### Documentation, licenses, text files
+
+*.log
+*.(markdown|MARKDOWN)
+*.(md|MD)
+*.(mkd|MKD)
+*.(mkdown|MKDOWN)
+*.txt
+doc
+docs
+(license|LICENSE)
+(readme|README)
+(authors|AUTHORS)
+(changes|CHANGES)
+(changelog|CHANGELOG)
+
+### Temp/cache files
+
+.(DS_Store|ds_store)
+*.1
+*.backup
+*.orig
+*.patch
+*.rej
+*.swp
+*.temp
+*.todo
+thumbs.db
+
+### Uncompiled files
+
+*.coffee
+*.ts
+*.jst
+*.flow

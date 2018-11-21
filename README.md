@@ -11,6 +11,12 @@ A template for writing next awesome JavaScript library.
 - Rewire plugin for easy testing with mocks
 - Eslint integration with strict rules by default
 
+## Bonus
+
+- hardcore .yarnclean rules to use in your projects - this will be probably moved to separate project
+you need to rename the file (remove `.txt` extension) to use it. It is very restrictive and will break almost any
+library by default. Use with care.
+
 \* - transpiling kills JS engines optimizations, makes codes longer and tree shaking harder to do and/or slower
 
 ## To be done

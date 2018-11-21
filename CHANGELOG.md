@@ -4,15 +4,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [UNRELEASED]
+
+## [1.0.4] - 2018-11-21
 ### Added
 - EditorConfig
 - async test example
 - log files to gitignore
+- .yarnclean file
 
 ### Changed
 - `todo` README entries
 - libraries updated (eslint, fs-extra, mocha)
 - Babel stuff updated
+- .npmignore to exclude some unneeded files
 
 ### Fixed
 - now adding regenerator runtime in transpiled code
