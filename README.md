@@ -15,7 +15,7 @@ A template for writing next awesome JavaScript library.
 
 ## To be done
 
-- Task runner
+- `Init` script, that will clear README, update `package.json` name, version, clear the code, examples etc.
 
 ## License
 
