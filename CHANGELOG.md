@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 - `todo` README entries
+- libraries updated (eslint, fs-extra, mocha)
+- Babel stuff updated
+
+### Fixed
+- now adding regenerator runtime in transpiled code
 
 ## [1.0.3] - 2018-10-05
 ### Added
