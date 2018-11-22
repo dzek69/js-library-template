@@ -1,0 +1,15 @@
+# Remove everything, but...
+
+*
+
+## Javascript files and package.json
+
+!*.js
+!package.json
+
+## Library config file babel needs
+!core.json
+
+## Binaries
+!.bin
+!.bin/*

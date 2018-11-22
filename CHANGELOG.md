@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [UNRELEASED]
 
+## [1.0.5] - 2018-11-22
+### Changed
+- EditorConfig config to let package.json stay at 2 spaces indent
+- Tests files eslint rules ignores
+
 ## [1.0.4] - 2018-11-21
 ### Added
 - EditorConfig
