@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [UNRELEASED]
 
+## [1.0.6] - 2018-11-27
+### Changed
+- .yarnclean updated to prevent some known issues and clean even more
+
 ## [1.0.5] - 2018-11-22
 ### Changed
 - EditorConfig config to let package.json stay at 2 spaces indent

@@ -8,12 +8,14 @@
 
 lodash/core.js
 lodash/lodash.js
+lodash/fp
 
 ### General bundles
 
 build
 bundle
 dist
+!sandwich-stream/dist
 *.bundle.js
 *.min.js
 
@@ -132,6 +134,7 @@ fuse.js
 .tern-project
 .travis.yml
 .tsconfig.json
+.yarn-integrity
 .yarn-metadata.json
 .yarnclean
 *.ini
