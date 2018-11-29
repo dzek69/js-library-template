@@ -102,6 +102,8 @@ Makefile
 Gulpfile.js
 Gruntfile.js
 fuse.js
+rollup.config.js
+webpack.config.js
 *.bat
 *.gradle
 *.sh
@@ -162,7 +164,7 @@ yarn.lock
 *.txt
 doc
 docs
-(license|LICENSE)
+(license|LICENSE|LICENCE)
 (readme|README)
 (authors|AUTHORS)
 (changes|CHANGES)
@@ -187,3 +189,4 @@ thumbs.db
 *.ts
 *.jst
 *.flow
+@types
