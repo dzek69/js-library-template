@@ -12,12 +12,14 @@
                 "mocha": true
             },
             "rules": {
+                "func-names": "off",
                 "global-require": "off",
                 "max-lines": "off",
                 "max-lines-per-function": "off",
                 "max-statements": "off",
                 "no-empty-function": "off",
-                "no-magic-numbers": "off"
+                "no-magic-numbers": "off",
+                "no-unused-labels": "off"
             }
         }
     ]

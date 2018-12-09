@@ -5,6 +5,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [UNRELEASED]
 
+## [1.0.8] - 2018-12-09
+### Changed
+- eslint ignored rules for tests
+
 ## [1.0.7] - 2018-11-29
 ### Changed
 - .yarnclean upgraded to remove more config files, license misspelling and TS types related files
