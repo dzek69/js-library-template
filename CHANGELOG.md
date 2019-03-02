@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.1.1] - 2019-03-02
+### Changed
+- updated `jsdoc` subdependencies in lockfile, `marked` had security issue
+
 ## [1.1.0] - 2019-03-02
 ### Changed
 - eslint rules config updated
