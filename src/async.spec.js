@@ -1,4 +1,6 @@
-import getSix from "./async";
+"use strict";
+
+const getSix = require("./async");
 
 describe("async method test", () => {
     it("gets six", async () => {
