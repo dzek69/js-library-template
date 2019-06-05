@@ -1,6 +1,6 @@
 {
   "name": "js-library-template",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/js-library-template.git",
   "author": "Jacek Nowacki @dzek69 <git-public@dzek.eu>",
@@ -26,7 +26,7 @@
     "docdash": "^1.0.0",
     "eslint": "^5.9.0",
     "fs-extra": "^7.0.1",
-    "jsdoc": "^3.5.5",
+    "jsdoc": "^3.6.2",
     "mocha": "^5.2.0",
     "must": "^0.13.4"
   }

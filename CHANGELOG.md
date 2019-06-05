@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.2.1] - 2019-06-05
+### Fixed
+- audit issues, `marked` was vulnerable
+
 ## [1.2.0] - 2019-05-09
 ### Fixed
 - `jsdoc` not generating docs from subfolders
