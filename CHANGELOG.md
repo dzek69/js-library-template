@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.3.0] - 2019-06-06
+### Added
+- cli tool to help init new library
+### Fixed
+- deps audit warnings
+
 ## [1.2.1] - 2019-06-05
 ### Fixed
 - audit issues, `marked` was vulnerable

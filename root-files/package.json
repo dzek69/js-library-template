@@ -1,13 +1,10 @@
 {
-  "name": "js-library-template",
-  "version": "1.3.0",
+  "name": "project-name",
+  "version": "0.0.0",
   "main": "src/index.js",
-  "repository": "https://github.com/dzek69/js-library-template.git",
-  "author": "Jacek Nowacki @dzek69 <git-public@dzek.eu>",
+  "repository": "",
+  "author": "",
   "license": "MIT",
-  "bin": {
-    "jslib": "cli.js"
-  },
   "scripts": {
     "test": "cross-env NODE_ENV=testing mocha 'src/**/*.spec.js'",
     "docs": "node build-scripts/docs && jsdoc -r src README.md -t node_modules/docdash -d ./docs -u ./tutorials -c jsdoc.json && node build-scripts/docs.after",
@@ -16,9 +13,6 @@
     "prepack": "npm run transpile",
     "lint": "eslint src/**/*.js src/*.js",
     "lint:fix": "npm run lint -- --fix"
-  },
-  "dependencies": {
-    "empty-dir": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",

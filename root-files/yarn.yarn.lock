@@ -1125,11 +1125,6 @@ emoji-regex@^7.0.1:
   resolved "https://registry.npmjs.org/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
   integrity sha512-CwBLREIQ7LvYFB0WyRvwhq5N5qPhc6PMjD6bYggFlI5YyDgl+0vxq5VHbMOFqLg7hfWzmu8T5Z1QofhmTIhItA==
 
-empty-dir@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/empty-dir/-/empty-dir-2.0.0.tgz#c59b4e73b9909d3c4bd49c1fbdaea52031fe22ac"
-  integrity sha512-XAedXlNAQZxMmbllXY9cxuESlNVjZ8xd67bSIUZwbS7VoLyhlNehVN3Iy35yDTGFHKR1opBRgORkp3am0so+WQ==
-
 entities@~1.1.1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"

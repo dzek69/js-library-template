@@ -11,6 +11,13 @@ A template for writing next awesome JavaScript library.
 - Rewire plugin for easy testing with mocks
 - Eslint integration with strict rules by default
 
+## Usage
+
+The best way is to install this lib globally and just run:
+
+`jslib` - to interactively init empty library
+`jslib path_to_directory` - to init empty library at given path (can be absolute or relative)
+
 ## Bonus
 
 - hardcore .yarnclean rules to use in your projects - this will be probably moved to separate project
@@ -18,10 +25,6 @@ you need to rename the file (remove `.txt` extension) to use it. It is very rest
 library by default. Use with care.
 
 \* - transpiling kills JS engines optimizations, makes codes longer and tree shaking harder to do and/or slower
-
-## To be done
-
-- `Init` script, that will clear README, update `package.json` name, version, clear the code, examples etc.
 
 ## License
 
