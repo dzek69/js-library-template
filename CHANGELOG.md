@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.3.1] - 2019-07-08
+### Fixed
+- eslint ignoring deeply located files
+
 ## [1.3.0] - 2019-06-06
 ### Added
 - cli tool to help init new library
