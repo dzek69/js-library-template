@@ -1,6 +1,6 @@
 {
   "name": "js-library-template",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/js-library-template.git",
   "author": "Jacek Nowacki @dzek69 <git-public@dzek.eu>",
@@ -14,7 +14,7 @@
     "transpile": "node build-scripts/transpile && babel src -d dist --ignore spec.js",
     "prepublishOnly": "npm run test && npm run lint && npm run docs",
     "prepack": "npm run transpile",
-    "lint": "eslint 'src/**/*.js' 'src/*.js'",
+    "lint": "cross-env eslint 'src/**/*.js' 'src/*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
