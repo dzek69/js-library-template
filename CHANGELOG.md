@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.3.4] - 2019-07-12
+### Fixed
+- issues with importing esmodules-style code in tests
+
 ## [1.3.3] - 2019-07-12
 ### Fixed
 - eslint misbehaving on Windows after recent fix - again
@@ -68,13 +72,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - async test example
 - log files to gitignore
 - .yarnclean file
-
 ### Changed
 - `todo` README entries
 - libraries updated (eslint, fs-extra, mocha)
 - Babel stuff updated
 - .npmignore to exclude some unneeded files
-
 ### Fixed
 - now adding regenerator runtime in transpiled code
 
@@ -82,10 +84,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Eslint integration
 - Code linting before publishing
-
 ### Fixed
 - Compatibility with Windows
-
 ### Changed
 - Added transpiling on `prepack`
 - Added tests before publishing
@@ -94,11 +94,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.0.2] - 2018-09-11
 ### Added
 - Possibility to define list of additional docs files while generating docs
-
 ### Changed
 - Updated docdash
 - Replaced fs-related dependencies with single fs-extra
-
 ### Removed
 - Lodash, that was unused anyway
 
@@ -106,10 +104,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Rewire plugin for testing
 - previously missing information about CHANGELOG example
-
 ### Fixed
 - test running command
-
 
 ## [1.0.0] - 2017-12-10
 ### Added
