@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.4.0] - 2019-07-14
+### Changed
+- babel related dependencies upgraded
+- eslint with rules set upgraded
+- mocha upgraded
+
 ## [1.3.4] - 2019-07-12
 ### Fixed
 - issues with importing esmodules-style code in tests
