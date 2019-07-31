@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.4.2] - 2019-07-31
+### Fixed
+- issues with importing esmodules-style code from node_modules in tests
+
 ## [1.4.1] - 2019-07-14
 ### Fixed
 - 1.4.0 changes not being applied with libraries created with CLI
