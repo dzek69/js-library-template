@@ -1,6 +1,6 @@
 {
   "name": "js-library-template",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "main": "src/index.js",
   "repository": "https://github.com/dzek69/js-library-template.git",
   "author": "Jacek Nowacki @dzek69 <git-public@dzek.eu>",

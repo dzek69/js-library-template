@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.5.0] - 2019-08-15
+### Fixed
+- generated library LICENSE file not containing given name (instead in rare cases package.json author field could be
+broken)
+### Changed
+- CLI now suggests project name based on target dir
+- CLI now trims given values
+- CLI now suggests Copyright value the same as Author (if given)
+
 ## [1.4.4] - 2019-08-15
 ### Fixed
 - generated lib unnecessary jsdoc config added to npmignore

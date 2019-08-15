@@ -15,12 +15,23 @@ const cli = readline.createInterface({
 const q = (question) => {
     return new Promise(resolve => {
         cli.question(question + " ", name => {
-            resolve(name);
+            resolve(name.trim());
         });
     });
 };
 
-const targetDir = path.resolve(process.argv[2] || ".");
+const extractProjectName = (givenPath) => {
+    if (givenPath === ".") {
+        return path.basename(process.cwd());
+    }
+    if (path.isAbsolute(givenPath)) {
+        return path.basename(givenPath);
+    }
+    return path.normalize(givenPath).replace(/\\/g, "/").split("/").filter(v => v !== "..").join("/");
+};
+
+const argsDir = process.argv[2] || ".";
+const targetDir = path.resolve(argsDir);
 
 const names = [
     "build-scripts",
@@ -52,6 +63,7 @@ const INDENT = 2;
 (async () => { // eslint-disable-line max-statements, max-lines-per-function
     try {
         console.info("Creating new library at", targetDir);
+        const projectNameFromPath = extractProjectName(argsDir);
         await fs.ensureDir(targetDir);
         const isEmpty = await emptyDir(targetDir);
         if (!isEmpty) {
@@ -77,26 +89,30 @@ const INDENT = 2;
 
         await Promise.all([...promises1, ...promises2, ...promises3]);
 
-        const project = await q("Project name? [project-name]");
-        const version = await q("Version? [0.0.0]");
+        const project = await q("Project name? [" + projectNameFromPath + "]");
+        const version = await q("Version? [0.0.1]");
         const repo = await q("Repository URL? [NOT SET]");
         const author = await q("Author [NOT SET]");
-        const copy = await q("Copyright (LICENSE), ie: My Name [NOT SET]");
+        const defaultLicense = author || "NOT SET";
+        const copy = await q("Copyright (LICENSE), ie: My Name [" + defaultLicense + "]");
+        const useCopy = copy || author;
         cli.close();
+
+        const useProjectName = project || projectNameFromPath;
 
         const pkgPath = path.join(targetDir, "package.json");
         const pkg = JSON.parse(await fs.readFile(pkgPath));
-        project && (pkg.name = project);
+        pkg.name = useProjectName;
         version && (pkg.version = version);
         repo ? pkg.repository = repo : delete pkg.repository; // eslint-disable-line no-unused-expressions
         author ? pkg.author = author : delete pkg.author; // eslint-disable-line no-unused-expressions
         await fs.writeFile(pkgPath, JSON.stringify(pkg, null, INDENT));
 
         let lic;
-        const licPath = path.join(targetDir, "package.json");
+        const licPath = path.join(targetDir, "LICENSE");
         const yr = new Date().getFullYear();
         lic = String(await fs.readFile(licPath));
-        lic = lic.replace("(c)", `${yr} ${copy}`);
+        lic = lic.replace("(c)", `(c) ${yr} ${useCopy}`);
         await fs.writeFile(licPath, lic);
 
         console.info("");
