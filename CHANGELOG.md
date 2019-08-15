@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.4.4] - 2019-08-15
+### Fixed
+- generated lib unnecessary jsdoc config added to npmignore
+
 ## [1.4.3] - 2019-08-02
 ### Fixed
 - some audit issues (dang you, lodash), still 167 sub-packages of dev-deps waiting to be fixed

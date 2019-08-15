@@ -8,5 +8,6 @@
 /*.tgz
 /*.log
 /.yarnclean
+/jsdoc.json
 /.editorconfig
 /.eslintrc.json
