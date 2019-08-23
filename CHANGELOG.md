@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.5.1] - 2019-08-23
+### Fixed
+- audit issues by upgrading lockfiles
+
 ## [1.5.0] - 2019-08-15
 ### Fixed
 - generated library LICENSE file not containing given name (instead in rare cases package.json author field could be
