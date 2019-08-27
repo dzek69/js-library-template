@@ -11,7 +11,7 @@
     "transpile": "node build-scripts/transpile && babel src -d dist --ignore spec.js",
     "prepublishOnly": "npm run test && npm run lint && npm run docs",
     "prepack": "npm run transpile",
-    "lint": "cross-env eslint 'src/**/*.js' 'src/*.js'",
+    "lint": "cross-env eslint --report-unused-disable-directives 'src/**/*.js' 'src/*.js'",
     "lint:fix": "npm run lint -- --fix"
   },
   "devDependencies": {
@@ -24,7 +24,7 @@
     "babel-plugin-rewire": "^1.2.0",
     "cross-env": "^5.2.0",
     "docdash": "^1.1.1",
-    "eslint": "^6.1.0",
+    "eslint": "^6.2.2",
     "fs-extra": "^7.0.1",
     "jsdoc": "^3.6.3",
     "mocha": "^6.2.0",

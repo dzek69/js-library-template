@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.6.0] - 2019-08-27
+### Changed
+- `--report-unused-disable-directives` parameter added into eslint run command
+- upgraded eslint
+
 ## [1.5.1] - 2019-08-23
 ### Fixed
 - audit issues by upgrading lockfiles
