@@ -7,7 +7,7 @@
     },
     "overrides": [
         {
-            "files": ["src/*.spec.js", "src/**/*.spec.js"],
+            "files": ["src/*.spec.js", "src/**/*.spec.js", "src/*.spec.jsx", "src/**/*.spec.jsx"],
             "env": {
                 "mocha": true
             },

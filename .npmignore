@@ -1,5 +1,5 @@
 /.idea/
-/dist/**/*.spec.js
+/dist
 
 /*.tgz
 /*.log

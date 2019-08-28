@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.7.0] - 2019-08-28
+### Added
+- support for JSX files extension (no actual JSX transpiling/React is added)
+
 ## [1.6.0] - 2019-08-27
 ### Changed
 - `--report-unused-disable-directives` parameter added into eslint run command
