@@ -6,6 +6,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const readline = require("readline");
 const emptyDir = require("empty-dir");
+const thisPkg = require("./package.json");
 
 const cli = readline.createInterface({
     input: process.stdin,
@@ -106,6 +107,9 @@ const INDENT = 2;
         version && (pkg.version = version);
         repo ? pkg.repository = repo : delete pkg.repository; // eslint-disable-line no-unused-expressions
         author ? pkg.author = author : delete pkg.author; // eslint-disable-line no-unused-expressions
+        pkg.libraryTemplate = {
+            version: thisPkg.version,
+        };
         await fs.writeFile(pkgPath, JSON.stringify(pkg, null, INDENT));
 
         let lic;

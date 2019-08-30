@@ -675,10 +675,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@dzek69/eslint-config-base@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@dzek69/eslint-config-base/-/eslint-config-base-1.0.0.tgz#2dafe3310046cf35551dcccaa706177cdcaf8b29"
-  integrity sha512-biwG4GWWxyy0qaHiqKL9QB4g88A/DKEneJ7s+Eb2OSvyy0FOFm4/CGCDukXHSDdNT9hsMCkP8sWSukH0xo5zGg==
+"@dzek69/eslint-config-base@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@dzek69/eslint-config-base/-/eslint-config-base-1.0.1.tgz#15721f91f250c0127a6ea3dae483d917bbd5bf95"
+  integrity sha512-VCBzxAJRePmRbSqiUKjLWmQuM6e3ft/idt44UnyADpR6lWWxhzjvY7dYHguhz1ptLDyn5e9hYaDsUy11yw0Ojg==
 
 abbrev@1:
   version "1.1.1"

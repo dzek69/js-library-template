@@ -6,9 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.8.0] - 2019-08-30
+### Added
+- storing version of js library template script used to generate inside package.json for future support of upgrading
+generated library
+### Changed
+- upgraded default linting rules version
+
 ## [1.7.0] - 2019-08-28
 ### Added
-- support for JSX files extension (no actual JSX transpiling/React is added)
+- (forced) support for JSX files extension (no actual JSX transpiling/React is added)
 
 ## [1.6.0] - 2019-08-27
 ### Changed
