@@ -27,10 +27,10 @@ const migrationsConfig = [
                         undefined,
                         new Error(
                             "cannot set husky pre-push hook as it is already defined\n  "
-                            + "wanted new value:\n  `npm run prepublishOnly && npm transpile`",
+                            + "wanted new value:\n  `yarn prepublishOnly && yarn transpile`",
                         ),
                     );
-                    await mig.setPath("husky.hooks.pre-push", "npm run prepublishOnly && npm transpile");
+                    await mig.setPath("husky.hooks.pre-push", "yarn prepublishOnly && yarn transpile");
                 },
             },
             {

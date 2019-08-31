@@ -41,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run prepublishOnly && npm transpile"
+      "pre-push": "yarn prepublishOnly && yarn transpile"
     }
   }
 }
