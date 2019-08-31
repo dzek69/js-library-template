@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.9.0] - 2019-08-31
+### Added
+- cli upgrading ability, if you have 1.8.0 version you can automatically apply new version of the library over the old
+one
+- husky git hooks manager with pre-push script to prevent bad pushes to your project
+### Changed
+- prepublishOnly script now first lints the code then test it (linter is expected to fail more often and it should be
+faster than running the tests)
+
 ## [1.8.0] - 2019-08-30
 ### Added
 - storing version of js library template script used to generate inside package.json for future support of upgrading

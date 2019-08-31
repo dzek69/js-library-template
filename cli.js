@@ -4,22 +4,12 @@
 
 const fs = require("fs-extra");
 const path = require("path");
-const readline = require("readline");
 const emptyDir = require("empty-dir");
+const get = require("bottom-line-utils/dist/get").default;
+const migrate = require("./migrate");
+const Question = require("./Question");
+
 const thisPkg = require("./package.json");
-
-const cli = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-const q = (question) => {
-    return new Promise(resolve => {
-        cli.question(question + " ", name => {
-            resolve(name.trim());
-        });
-    });
-};
 
 const extractProjectName = (givenPath) => {
     if (givenPath === ".") {
@@ -63,13 +53,33 @@ const INDENT = 2;
 
 (async () => { // eslint-disable-line max-statements, max-lines-per-function
     try {
-        console.info("Creating new library at", targetDir);
+        console.info("Target dir:", targetDir);
         const projectNameFromPath = extractProjectName(argsDir);
         await fs.ensureDir(targetDir);
+
+        const pkgPath = path.join(targetDir, "package.json");
+
         const isEmpty = await emptyDir(targetDir);
         if (!isEmpty) {
-            throw new Error("Target directory is not empty.");
+            let pkg,
+                ver;
+            try {
+                pkg = JSON.parse(await fs.readFile(pkgPath));
+                ver = get(pkg, ["libraryTemplate", "version"]);
+                if (!ver) {
+                    throw new Error("No version");
+                }
+            }
+            catch (e) { // eslint-disable-line no-unused-vars
+                throw new Error("Target directory is not empty, no supported library found to upgrade.");
+            }
+
+            await migrate({
+                targetDir, pkg, ver, thisPkg,
+            });
+            return;
         }
+        console.info("Creating new library");
         await fs.ensureDir(path.join(targetDir, "tutorials"));
         const selfDirName = path.dirname(__filename);
         const promises1 = names.map(async name => {
@@ -90,27 +100,28 @@ const INDENT = 2;
 
         await Promise.all([...promises1, ...promises2, ...promises3]);
 
-        const project = await q("Project name? [" + projectNameFromPath + "]");
-        const version = await q("Version? [0.0.1]");
-        const repo = await q("Repository URL? [NOT SET]");
-        const author = await q("Author [NOT SET]");
+        const q = new Question();
+
+        const project = await q.ask("Project name? [" + projectNameFromPath + "]");
+        const version = await q.ask("Version? [0.0.1]");
+        const repo = await q.ask("Repository URL? [NOT SET]");
+        const author = await q.ask("Author [NOT SET]");
         const defaultLicense = author || "NOT SET";
-        const copy = await q("Copyright (LICENSE), ie: My Name [" + defaultLicense + "]");
+        const copy = await q.ask("Copyright (LICENSE), ie: My Name [" + defaultLicense + "]");
         const useCopy = copy || author;
-        cli.close();
+        q.close();
 
         const useProjectName = project || projectNameFromPath;
 
-        const pkgPath = path.join(targetDir, "package.json");
-        const pkg = JSON.parse(await fs.readFile(pkgPath));
-        pkg.name = useProjectName;
-        version && (pkg.version = version);
-        repo ? pkg.repository = repo : delete pkg.repository; // eslint-disable-line no-unused-expressions
-        author ? pkg.author = author : delete pkg.author; // eslint-disable-line no-unused-expressions
-        pkg.libraryTemplate = {
+        const targetPkg = JSON.parse(await fs.readFile(pkgPath));
+        targetPkg.name = useProjectName;
+        version && (targetPkg.version = version);
+        repo ? targetPkg.repository = repo : delete targetPkg.repository; // eslint-disable-line no-unused-expressions
+        author ? targetPkg.author = author : delete targetPkg.author; // eslint-disable-line no-unused-expressions
+        targetPkg.libraryTemplate = {
             version: thisPkg.version,
         };
-        await fs.writeFile(pkgPath, JSON.stringify(pkg, null, INDENT));
+        await fs.writeFile(pkgPath, JSON.stringify(targetPkg, null, INDENT));
 
         let lic;
         const licPath = path.join(targetDir, "LICENSE");

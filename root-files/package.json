@@ -9,7 +9,7 @@
     "test": "cross-env NODE_ENV=testing mocha 'src/**/*.spec.js' 'src/**/*.spec.jsx'",
     "docs": "node build-scripts/docs && jsdoc -r src README.md -t node_modules/docdash -d ./docs -u ./tutorials -c jsdoc.json && node build-scripts/docs.after",
     "transpile": "node build-scripts/transpile && babel src -d dist --ignore **/*.spec.js*",
-    "prepublishOnly": "npm run test && npm run lint && npm run docs",
+    "prepublishOnly": "npm run lint && npm run test && npm run docs",
     "prepack": "npm run transpile",
     "lint": "cross-env eslint --report-unused-disable-directives 'src/**/*.js' 'src/*.js' 'src/**/*.jsx' 'src/*.jsx'",
     "lint:fix": "npm run lint -- --fix"
@@ -26,8 +26,14 @@
     "docdash": "^1.1.1",
     "eslint": "^6.2.2",
     "fs-extra": "^7.0.1",
+    "husky": "^3.0.4",
     "jsdoc": "^3.6.3",
     "mocha": "^6.2.0",
     "must": "^0.13.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run prepublishOnly && npm transpile"
+    }
   }
 }
