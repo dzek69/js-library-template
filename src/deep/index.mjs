@@ -1,6 +1,4 @@
-"use strict";
-
-const os = require("os");
+import os from "os";
 
 /**
  * Returns "howdy" followed by given name and os platform
@@ -10,4 +8,4 @@ const os = require("os");
  */
 const howdy = (name = "stranger") => "howdy " + name + " on " + os.platform();
 
-module.exports = howdy;
+export default howdy;

@@ -1,6 +1,4 @@
-"use strict";
-
-const hi = require("./index");
+import hi from "./index.mjs";
 
 describe("index", () => {
     it("must say hi with name", () => {

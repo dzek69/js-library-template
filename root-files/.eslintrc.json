@@ -8,7 +8,6 @@
     "parserOptions": {
         "sourceType": "module"
     },
-    "ignorePatterns": ["root.mjs"],
     "overrides": [
         {
             "files": [

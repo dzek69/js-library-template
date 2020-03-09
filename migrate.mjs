@@ -1,8 +1,7 @@
-"use strict";
-
-const semver = require("semver");
-const migrationsConfig = require("./migrations.config");
-const Migration = require("./Migration");
+import semver from "semver";
+import migrationsConfig from "./migrations.config.mjs";
+import Migration from "./Migration.mjs";
+import Question from "./Question.mjs";
 
 const applyMigrations = async ({ migration, migrations }) => {
     let skipped = 0;
@@ -31,13 +30,40 @@ const applyMigrations = async ({ migration, migrations }) => {
     return skipped;
 };
 
-const migrate = async ({ targetDir, pkg, ver }) => {
+const aggressiveMessage = async (migrations) => {
+    const aggressive = migrations.map(m => m.aggresive).filter(Boolean);
+    if (!aggressive.length) {
+        return true;
+    }
+    console.info("");
+    console.info("WARNING: Aggressive upgrade detected!");
+    console.info(
+        "Aggressive upgrade means that customizations applied over previously-generated library may be lost "
+            + "or that library won't work after upgrading without further changes to the code. Please verify this list "
+            + "of POTENTIAL POSSIBLE issues and accept the upgrade progress:",
+    );
+    console.info(aggressive.map(a => a.trim()).join("\n"));
+    console.info("");
+
+    const q = new Question();
+    const accept = await q.ask("Do you want to continue? (y/n) [n]");
+    q.close();
+
+    return accept.startsWith("y");
+};
+
+const migrate = async ({ targetDir, pkg, ver }) => { // eslint-disable-line max-statements
     const migration = new Migration({ targetDir, pkg });
     const migrations = migrationsConfig.filter(migrationConfig => {
         return semver.gte(migrationConfig.version, ver);
     });
 
     const versions = migrations.map(m => m.nextVersion);
+    const cont = await aggressiveMessage(migrations);
+    if (!cont) {
+        console.info("Upgrade stopped.");
+        return;
+    }
 
     if (!migrations.length) {
         console.info("The project is up to date with current js-library-template.");
@@ -54,4 +80,4 @@ const migrate = async ({ targetDir, pkg, ver }) => {
     console.info("Upgrading finished.");
 };
 
-module.exports = migrate;
+export default migrate;

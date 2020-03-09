@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.0] - 2020-03-09
+### Changed
+- upgraded a lot of dependencies
+### Added
+- support for real ESM code, keeping compatibility with CommonJS and older Node.JS versions, Node 13.2+ is however
+required to use this app and develop libraries
+### Removed
+- pre-generated yarn.lock in generated library
+- support for jsx files
+### Fixed
+- default version not set
+
 ## [1.9.0] - 2019-08-31
 ### Added
 - cli upgrading ability, if you have 1.8.0 version you can automatically apply new version of the library over the old

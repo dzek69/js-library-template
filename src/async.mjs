@@ -1,5 +1,3 @@
-"use strict";
-
 const getFive = () => 5; // eslint-disable-line no-magic-numbers
 
 const getSixAsynchronously = async () => {
@@ -7,4 +5,4 @@ const getSixAsynchronously = async () => {
     return result + 1;
 };
 
-module.exports = getSixAsynchronously;
+export default getSixAsynchronously;

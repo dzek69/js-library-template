@@ -1,6 +1,4 @@
-"use strict";
-
-const readline = require("readline");
+import readline from "readline";
 
 class Question {
     _createIfNeeded() {
@@ -12,11 +10,11 @@ class Question {
         }
     }
 
-    ask(question) {
+    ask(question, def = "") {
         this._createIfNeeded();
         return new Promise(resolve => {
             this._cli.question(question + " ", name => {
-                resolve(name.trim());
+                resolve(name.trim() || def);
             });
         });
     }
@@ -29,4 +27,4 @@ class Question {
     }
 }
 
-module.exports = Question;
+export default Question;

@@ -1,9 +1,10 @@
-"use strict";
+import fs from "fs-extra";
+import child from "child_process";
+import { join } from "path";
+import bottom from "bottom-line-utils/dist/index.js";
+import thisDir from "./root.mjs";
 
-const fs = require("fs-extra");
-const child = require("child_process");
-const { join } = require("path");
-const { get, set } = require("bottom-line-utils/dist");
+const { get, set } = bottom;
 
 const run = (command, args, options) => {
     return new Promise((resolve, reject) => {
@@ -31,6 +32,7 @@ const run = (command, args, options) => {
 };
 
 const PKG_JSON_INDENT = 2;
+const JSON_INDENT = 4;
 
 class Migration {
     constructor(opts) {
@@ -54,12 +56,69 @@ class Migration {
         await this.setPath(["scripts", scriptName], value);
     }
 
+    async upgradeScript(scriptName, oldValue, newValue) {
+        await this.assertScript(
+            scriptName,
+            oldValue,
+            new Error(
+                "cannot update prepublishOnly script as it was modified\n  "
+                + "wanted new value:\n  `" + newValue + "`",
+            ),
+        );
+        await this.setScript(scriptName, newValue);
+    }
+
     async addDependency(name, version) {
         await this.setPath(["dependencies", name], version);
     }
 
     async addDevDependency(name, version) {
         await this.setPath(["devDependencies", name], version);
+    }
+
+    async upgradeDependency(name, version, defaultType = "dependencies") {
+        const type = this.findDependency(name) || defaultType;
+        await this.setPath([type, name], version);
+    }
+
+    findDependency(name) {
+        const deps = this._pkg.dependencies || {};
+        const dev = this._pkg.devDependencies || {};
+        if (deps[name]) {
+            return "dependencies";
+        }
+        if (dev[name]) {
+            return "devDependencies";
+        }
+    }
+
+    async remove(dirName) {
+        await fs.remove(join(this._targetDir, dirName));
+    }
+
+    async copy(sourceName, targetName) {
+        await fs.copy(
+            join(thisDir, sourceName),
+            join(this._targetDir, targetName),
+        );
+    }
+
+    async rename(source, target) {
+        await fs.rename(join(this._targetDir, source), join(this._targetDir, target));
+    }
+
+    async updateContents(file, updater) {
+        const target = join(this._targetDir, file);
+        const data = String(await fs.readFile(target));
+        const contents = await updater(data);
+        await fs.writeFile(target, contents);
+    }
+
+    async updateContentsJSON(file, updater) {
+        const target = join(this._targetDir, file);
+        const data = JSON.parse(String(await fs.readFile(target)));
+        await updater(data, set.bind(null, data));
+        await fs.writeFile(target, JSON.stringify(data, null, JSON_INDENT));
     }
 
     assertPath(path, value, error) {
@@ -97,4 +156,4 @@ class Migration {
     }
 }
 
-module.exports = Migration;
+export default Migration;

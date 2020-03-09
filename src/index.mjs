@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * Returns "hi" followed by given name
  *
@@ -8,4 +6,4 @@
  */
 const hi = (name) => "hi " + name;
 
-module.exports = hi;
+export default hi;

@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-"use strict";
+import fs from "fs-extra";
+import path from "path";
+import isEmptyDir from "empty-dir";
 
-const fs = require("fs-extra");
-const path = require("path");
-const emptyDir = require("empty-dir");
-const get = require("bottom-line-utils/dist/get").default;
-const migrate = require("./migrate");
-const Question = require("./Question");
+import thisDir from "./root.mjs";
+import getExp from "bottom-line-utils/dist/get.js";
+import migrate from "./migrate.mjs";
+import Question from "./Question.mjs";
 
-const thisPkg = require("./package.json");
+const get = getExp.default;
 
 const extractProjectName = (givenPath) => {
     if (givenPath === ".") {
@@ -28,15 +28,15 @@ const names = [
     "build-scripts",
     "src",
     "test",
-    ".babelrc",
+    ".babelrc.cjs",
     ".editorconfig",
-    ".eslintrc.json",
     ".yarnclean.txt",
     ".yarnclean.whitelist",
     "jsdoc.json",
 ];
 
 const rootNames = [
+    ".eslintrc.json",
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
@@ -44,7 +44,6 @@ const rootNames = [
 ];
 
 const rootFixedNames = {
-    "yarn.yarn.lock": "yarn.lock",
     "gitignore.gitignore": ".gitignore",
     "npmignore.npmignore": ".npmignore",
 };
@@ -53,13 +52,15 @@ const INDENT = 2;
 
 (async () => { // eslint-disable-line max-statements, max-lines-per-function
     try {
+        const thisPkg = JSON.parse(String(await fs.readFile(path.join(thisDir, "package.json"))));
+
         console.info("Target dir:", targetDir);
         const projectNameFromPath = extractProjectName(argsDir);
         await fs.ensureDir(targetDir);
 
         const pkgPath = path.join(targetDir, "package.json");
 
-        const isEmpty = await emptyDir(targetDir);
+        const isEmpty = await isEmptyDir(targetDir);
         if (!isEmpty) {
             let pkg,
                 ver;
@@ -81,20 +82,19 @@ const INDENT = 2;
         }
         console.info("Creating new library");
         await fs.ensureDir(path.join(targetDir, "tutorials"));
-        const selfDirName = path.dirname(__filename);
         const promises1 = names.map(async name => {
             const target = path.join(targetDir, name);
-            const source = path.join(selfDirName, name);
+            const source = path.join(thisDir, name);
             await fs.copy(source, target);
         });
         const promises2 = rootNames.map(async name => {
             const target = path.join(targetDir, name);
-            const source = path.join(selfDirName, "root-files", name);
+            const source = path.join(thisDir, "root-files", name);
             await fs.copy(source, target);
         });
         const promises3 = Object.entries(rootFixedNames).map(async ([fakeName, realName]) => {
             const target = path.join(targetDir, realName);
-            const source = path.join(selfDirName, "root-files", fakeName);
+            const source = path.join(thisDir, "root-files", fakeName);
             await fs.copy(source, target);
         });
 
@@ -115,7 +115,7 @@ const INDENT = 2;
 
         const targetPkg = JSON.parse(await fs.readFile(pkgPath));
         targetPkg.name = useProjectName;
-        version && (targetPkg.version = version);
+        targetPkg.version = version || "0.0.1";
         repo ? targetPkg.repository = repo : delete targetPkg.repository; // eslint-disable-line no-unused-expressions
         author ? targetPkg.author = author : delete targetPkg.author; // eslint-disable-line no-unused-expressions
         targetPkg.libraryTemplate = {
@@ -134,6 +134,7 @@ const INDENT = 2;
         console.info("Done");
     }
     catch (e) {
+        console.error("Error happend!");
         console.error(e.message);
         process.exit(1); // eslint-disable-line no-process-exit
     }

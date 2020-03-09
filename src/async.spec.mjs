@@ -1,6 +1,4 @@
-"use strict";
-
-const getSix = require("./async");
+import getSix from "./async.mjs";
 
 describe("async method test", () => {
     it("gets six", async () => {

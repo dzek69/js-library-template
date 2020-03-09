@@ -1,6 +1,4 @@
-"use strict";
-
-const howdy = require("./index");
+import howdy from "./index.mjs";
 
 describe("howdy", () => {
     let platformMock;
