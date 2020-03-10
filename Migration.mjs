@@ -61,7 +61,7 @@ class Migration {
             scriptName,
             oldValue,
             new Error(
-                "cannot update prepublishOnly script as it was modified\n  "
+                "cannot update " + scriptName + " script as it was modified\n  "
                 + "wanted new value:\n  `" + newValue + "`",
             ),
         );
