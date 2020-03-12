@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.2] - 2020-03-12
+### Fixed
+- incorrectly updating .eslintrc on 2.0.0
+
 ## [2.0.1] - 2020-03-10
 ### Fixed
 - incorrect error message when cannot update package.json script during migration

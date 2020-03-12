@@ -101,7 +101,7 @@ const migrationsConfig = [
                 fn: async (mig) => {
                     await mig.updateContentsJSON(".eslintrc.json", (content, set) => {
                         set("parserOptions.sourceType", "module");
-                        set("overrides.files", [
+                        set("overrides.files", [ // broken, fixed with 2.0.2
                             "src/*.spec.mjs", "src/**/*.spec.mjs",
                         ]);
                     });
@@ -300,6 +300,28 @@ const migrationsConfig = [
                             }
                             return line;
                         }).join("\n");
+                    });
+                },
+            },
+        ],
+    },
+    {
+        version: "2.0.1",
+        nextVersion: "2.0.2",
+        aggresive: `
+- .eslintrc overrides will be overwritten
+`.trim(),
+        steps: [
+            {
+                name: `upgrade .eslintrc.json`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.updateContentsJSON(".eslintrc.json", (content, set) => {
+                        set("overrides.0.files", [
+                            "src/*.spec.mjs", "src/**/*.spec.mjs",
+                        ]);
                     });
                 },
             },
