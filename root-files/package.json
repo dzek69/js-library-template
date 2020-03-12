@@ -33,9 +33,6 @@
     "mocha": "^6.2.2",
     "must": "^0.13.4"
   },
-  "engines" : {
-    "node" : ">=13.2.0"
-  },
   "husky": {
     "hooks": {
       "pre-push": "yarn prepublishOnly && yarn transpile"
