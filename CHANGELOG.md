@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.3] - 2020-03-12
+### Fixed
+- generated library CommonJS code has invalid imports
+
 ## [2.0.2] - 2020-03-12
 ### Fixed
 - incorrectly updating .eslintrc on 2.0.0

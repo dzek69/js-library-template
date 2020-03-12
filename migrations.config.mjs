@@ -327,6 +327,35 @@ const migrationsConfig = [
             },
         ],
     },
+    {
+        version: "2.0.2",
+        nextVersion: "2.0.3",
+        aggresive: `
+- .babelrc will be overwritten
+`.trim(),
+        steps: [
+            {
+                name: `upgrade .babelrc.cjs`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.copy(".babelrc.cjs", ".babelrc.cjs");
+                },
+            },
+            {
+                name: ``,
+                fn: async (mig) => {
+                    await mig.assertNoAnyDependency(
+                        "babel-plugin-module-extension",
+                        new Error("babel-plugin-module-extension is already installed"),
+                    );
+                    await mig.addDevDependency("babel-plugin-module-extension", "^0.1.1");
+                    await mig.yarn();
+                },
+            },
+        ],
+    },
 ];
 
 export default migrationsConfig;
