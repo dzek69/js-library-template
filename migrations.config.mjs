@@ -64,7 +64,7 @@ const migrationsConfig = [
                  */
                 fn: async (mig) => {
                     await mig.remove("build-scripts");
-                    await mig.copy("build-scripts", "build-scripts");
+                    await mig.copy("build-scripts");
                 },
             },
             {
@@ -74,7 +74,7 @@ const migrationsConfig = [
                  */
                 fn: async (mig) => {
                     await mig.remove(".babelrc");
-                    await mig.copy(".babelrc.cjs", ".babelrc.cjs");
+                    await mig.copy(".babelrc.cjs");
                 },
             },
             {
@@ -340,7 +340,7 @@ const migrationsConfig = [
                  * @param {Migration} mig
                  */
                 fn: async (mig) => {
-                    await mig.copy(".babelrc.cjs", ".babelrc.cjs");
+                    await mig.copy(".babelrc.cjs");
                 },
             },
             {
@@ -352,6 +352,58 @@ const migrationsConfig = [
                     );
                     await mig.addDevDependency("babel-plugin-module-extension", "^0.1.1");
                     await mig.yarn();
+                },
+            },
+        ],
+    },
+    {
+        version: "2.0.4",
+        nextVersion: "2.0.5",
+        steps: [
+            {
+                name: `upgrade transpile script code`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.copy("build-scripts/transpile.after.mjs");
+                },
+            },
+            {
+                name: `upgrade package.json transpile script`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.upgradeScript(
+                        "transpile",
+                        "node build-scripts/transpile.mjs && babel src -d dist --ignore **/*.spec.mjs",
+                        "node build-scripts/transpile.mjs && babel src -d dist --ignore **/*.spec.mjs && "
+                        + "node build-scripts/transpile.after.mjs",
+                    );
+                },
+            },
+            {
+                name: `set package.json transpile config`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.setPath("libraryTemplate.fixDefaultForCommonJS", true);
+                },
+            },
+            {
+                name: `set package.json exports field`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.setPath("exports", {
+                        ".": {
+                            require: "./dist/index.js",
+                            default: "./src/index.mjs",
+                        },
+                    });
                 },
             },
         ],

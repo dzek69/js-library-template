@@ -28,7 +28,6 @@ const names = [
     "build-scripts",
     "src",
     "test",
-    ".babelrc.cjs",
     ".editorconfig",
     ".yarnclean.txt",
     ".yarnclean.whitelist",
@@ -36,6 +35,7 @@ const names = [
 ];
 
 const rootNames = [
+    ".babelrc.cjs",
     ".eslintrc.json",
     "CHANGELOG.md",
     "LICENSE",

@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.5] - 2020-03-13
+### Fixed
+- CommonJS transpiled code compatibility
+### Removed
+- unneeded code and dependencies
+### Added
+- `engines` in package.json (previously incorrectly added into generated package.json)
+
 ## [2.0.4] - 2020-03-12
 ### Fixed
 - when creating new library it should not have `engines` in package.json

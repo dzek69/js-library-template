@@ -96,10 +96,10 @@ class Migration {
         await fs.remove(join(this._targetDir, dirName));
     }
 
-    async copy(sourceName, targetName) {
+    async copy(sourceName, targetName = null) {
         await fs.copy(
             join(thisDir, sourceName),
-            join(this._targetDir, targetName),
+            join(this._targetDir, targetName || sourceName),
         );
     }
 
