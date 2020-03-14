@@ -16,7 +16,7 @@ import path from "path";
         throw new Error("Cannot find package.json `main` entry.");
     }
 
-    const parts = pkg.main.split(path.sep);
+    const parts = pkg.main.split("/");
     const last = parts[parts.length - 1];
     if (!last.match(/^[a-z\d.]+$/i)) {
         throw new Error("package.json `main` entry should be a file containing latin a-z letters and numbers only.");
@@ -35,4 +35,7 @@ Object.keys(m).filter(key => key !== "default").forEach(key => {
 });
 `;
     await fs.writeFile(pkg.main, contents.trim());
-})();
+})().catch(e => {
+    console.error(e);
+    process.exit(1);
+});
