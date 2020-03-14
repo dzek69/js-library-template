@@ -408,6 +408,21 @@ const migrationsConfig = [
             },
         ],
     },
+    {
+        version: "2.0.7",
+        nextVersion: "2.0.8",
+        steps: [
+            {
+                name: `upgrade transpile script code`,
+                /**
+                 * @param {Migration} mig
+                 */
+                fn: async (mig) => {
+                    await mig.copy("build-scripts/transpile.after.mjs");
+                },
+            },
+        ],
+    },
 ];
 
 export default migrationsConfig;

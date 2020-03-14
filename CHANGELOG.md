@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.8] - 2020-03-14
+### Fixed
+- missing migration with transpiling to CommonJS on Windows fix
+
 ## [2.0.7] - 2020-03-14
 ### Fixed
 - transpiling to CommonJS on Windows
