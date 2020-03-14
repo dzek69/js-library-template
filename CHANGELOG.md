@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [2.0.6] - 2020-03-14
+### Fixed
+- upgrading from 2.0.2
+
 ## [2.0.5] - 2020-03-13
 ### Fixed
 - CommonJS transpiled code compatibility

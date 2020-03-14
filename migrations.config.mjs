@@ -74,7 +74,7 @@ const migrationsConfig = [
                  */
                 fn: async (mig) => {
                     await mig.remove(".babelrc");
-                    await mig.copy(".babelrc.cjs");
+                    await mig.copy("root-files/.babelrc.cjs", ".babelrc.cjs");
                 },
             },
             {
@@ -340,7 +340,7 @@ const migrationsConfig = [
                  * @param {Migration} mig
                  */
                 fn: async (mig) => {
-                    await mig.copy(".babelrc.cjs");
+                    await mig.copy("root-files/.babelrc.cjs", ".babelrc.cjs");
                 },
             },
             {
